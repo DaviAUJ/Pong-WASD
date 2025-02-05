@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 
 public class MovimentoBola : MonoBehaviour {
-    public Vector2 direcao;
-    public float velocidade = 8f;
+    public float velocidade = 6.4f;
     public float velocidadeMax = 40f;
     public float incremento = 0.8f;
 
+    private Vector2 direcao;
     private Rigidbody2D rb;
 
 
@@ -33,9 +33,8 @@ public class MovimentoBola : MonoBehaviour {
 
 
     private void EscolherDirecao() {
-        // Gerando ângulo em radiano de aproximadamente 20 até 70 graus e depois determinando a qual quadrante do circulo unitário o ângulo pertence
-        double angulo = UnityEngine.Random.Range(0.349f, 1.221f) + UnityEngine.Random.Range(0, 4) * Math.PI / 2;
-        Debug.Log(angulo);
+        // Gerando ângulo em radiano de aproximadamente 20 até 60 graus e depois determinando a qual quadrante do circulo unitário o ângulo pertence
+        double angulo = UnityEngine.Random.Range(0.349f, 1.047f) + UnityEngine.Random.Range(0, 4) * Math.PI / 2;
 
         direcao = new Vector2((float)Math.Cos(angulo), (float)Math.Sin(angulo));
     }
