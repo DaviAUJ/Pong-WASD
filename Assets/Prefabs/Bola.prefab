@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3607124038535836537}
   - component: {fileID: 8827429912042204802}
   - component: {fileID: 4236989948933946573}
-  - component: {fileID: -5894427639108123121}
+  - component: {fileID: -111380049312372983}
   m_Layer: 0
   m_Name: Bola
   m_TagString: Untagged
@@ -163,7 +163,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &-5894427639108123121
+--- !u!114 &-111380049312372983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,8 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 40
-  velocidadeInicial: 6.4
   velocidade: 6.4
   incremento: 0.8
-  anguloAdicional: 10
-  direcao: {x: 1, y: 2}
+  anguloAdicionalRad: 0.34906587
+  direcao: {x: 0, y: 0}

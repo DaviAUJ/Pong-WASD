@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 
 public class MovimentoBola : MonoBehaviour {
     public float velocidadeMax = 40f;
     public float velocidade = 6.4f;
     public float incremento = 0.8f;
-    public float anguloAdicional = 10f;
+    public float anguloAdicionalRad = Mathf.PI / 9; // 20 graus
+
     public Vector2 direcao;
-    
     private Rigidbody2D rb;
 
 
@@ -15,7 +14,8 @@ public class MovimentoBola : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
 
-        EscolherDirecao();
+        // entre 20 e 60 graus
+        EscolherAnguloAleatorio(Mathf.PI / 9, Mathf.PI / 3);
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
@@ -33,11 +33,10 @@ public class MovimentoBola : MonoBehaviour {
 
 
 
-    private void EscolherDirecao() {
-        // Gerando ângulo em radiano de 20 até 60 graus e depois determinando a qual quadrante do circulo unitário o ângulo pertence
-        double angulo = UnityEngine.Random.Range((float)Math.PI / 9, (float)Math.PI / 3) + UnityEngine.Random.Range(0, 4) * Math.PI / 2;
-
-        direcao = new Vector2((float)Math.Cos(angulo), (float)Math.Sin(angulo));
+    private void EscolherAnguloAleatorio(float minInclusivo, float maxInclusivo) {
+        // Gerando ângulo em radiano e depois determinando a qual quadrante do circulo unitário o ângulo pertence
+        float anguloRad = Random.Range(minInclusivo, maxInclusivo) + Random.Range(0, 4) * Mathf.PI / 2;
+        direcao.Set(Mathf.Cos(anguloRad), Mathf.Sin(anguloRad));
     }
 
     private void IncrementarVelocidade() {
@@ -48,14 +47,28 @@ public class MovimentoBola : MonoBehaviour {
         }
     }
 
-    private void ColisaoRaquete(float sentidoY) {
-        float aux = sentidoY * anguloAdicional;
+    private void ColisaoRaquete(float sentidoBarra) {
+        // verificando se a bolinha vai ficar num ângulo aceitável para a situação
+        if(sentidoBarra > 0 && direcao.y <= 0.70f || sentidoBarra < 0 && direcao.y >= -0.70f) {
+            float aux = sentidoBarra * anguloAdicionalRad;
+
+            // Solução provisória que funciona
+            // A barrinha da esquerda fica com as propriedades de conservação de momento invertidas
+            // Isso aqui resolve
+            if(direcao.x < 0) {
+                aux *= -1;
+            }
+
+            Debug.Log(sentidoBarra);
+            direcao.Set(
+                // Matriz de rotação
+                direcao.x * Mathf.Cos(aux) - direcao.y * Mathf.Sin(aux),
+                direcao.x * Mathf.Sin(aux) + direcao.y * Mathf.Cos(aux)
+            );
+        }
 
         direcao.x *= -1;
-        direcao.Set(
-            (float)(direcao.x * Math.Cos(aux) - direcao.y * Math.Sin(aux)),
-            (float)(direcao.x * Math.Sin(aux) + direcao.y * Math.Cos(aux))
-        );
+
         IncrementarVelocidade();
     }
 
