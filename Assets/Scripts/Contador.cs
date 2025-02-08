@@ -2,9 +2,6 @@ using TMPro;
 using UnityEngine;
 
 public class Contador : MonoBehaviour {
-    public int pontosVitoria = 7;
-
-    private int pontos = 0;
     private TMP_Text texto;
 
 
@@ -14,18 +11,8 @@ public class Contador : MonoBehaviour {
     }
 
 
-    
-    private void AtualizarTexto() {
-        texto.text = pontos.ToString();
-    }
 
-    public void Pontuar() {
-        pontos++;
-
-        AtualizarTexto();
-
-        if(pontos >= pontosVitoria) {
-            // Declarar vitoria
-        }
+    public void AtualizarTexto(int novoInt) {
+        texto.text = novoInt.ToString();
     }
 }

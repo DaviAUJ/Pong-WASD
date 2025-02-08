@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 10
+  direcao: {x: 0, y: 0}
   movimento: {fileID: -7917762769590653632, guid: 8dbfa4468d1abcd418c1b34f0dd337dd, type: 3}
 --- !u!1 &1070693963
 GameObject:
@@ -1417,9 +1418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54532e1aa46bfc488a8125c945fc138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidade: 8
   velocidadeMax: 40
+  velocidade: 8
   incremento: 0.8
+  anguloAdicional: 5
+  direcao: {x: 0, y: 0}
 --- !u!50 &1268041701
 Rigidbody2D:
   serializedVersion: 5
@@ -1843,6 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 10
+  direcao: {x: 0, y: 0}
   movimento: {fileID: -7917762769590653632, guid: f3a0dc86ab0ee024abc19d1fbd3d22ce, type: 3}
 --- !u!1 &1642818169
 GameObject:

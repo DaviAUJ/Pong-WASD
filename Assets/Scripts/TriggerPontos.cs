@@ -1,14 +1,12 @@
-using System;
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour {
-    [SerializeField]
-    public Contador contadorRelacionado;
+    public Jogador jogadorRelacionado;
 
 
 
     private void OnCollisionEnter2D(Collision2D bolinha) {
-        contadorRelacionado.Pontuar();
+        jogadorRelacionado.Pontuar();
 
         Destroy(bolinha.gameObject);
     }
