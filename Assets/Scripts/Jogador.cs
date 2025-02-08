@@ -1,7 +1,8 @@
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class Jogador : MonoBehaviour {
+    public string nome = "jogador";
     public int pontosVitoria = 10;
     public Contador contadorRelacionado;
 
@@ -20,6 +21,16 @@ public class Jogador : MonoBehaviour {
         pontos++;
 
         contadorRelacionado.AtualizarTexto(pontos);
-        partidaRelacionada.CriarBola();
+
+        if(pontosVitoria <= pontos) {
+            Vencer();
+        }
+        else {
+            partidaRelacionada.CriarBola();
+        }
+    }
+
+    private void Vencer() {
+        partidaRelacionada.MostarVencedor(nome);
     }
 }
