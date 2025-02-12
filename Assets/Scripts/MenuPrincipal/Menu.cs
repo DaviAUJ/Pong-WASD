@@ -1,16 +1,21 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class BotaoJogar : MonoBehaviour
+public class Menu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public void CarregarJogo() {
+        SceneManager.LoadScene(1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void FecharJogo() {
+        Application.Quit();
+    }
+
+    public void HabilitarObjeto(GameObject objeto) {
+        objeto.SetActive(true);
+    }
+
+    public void DesabilitarObjeto(GameObject objeto) {
+        objeto.SetActive(false);
     }
 }
