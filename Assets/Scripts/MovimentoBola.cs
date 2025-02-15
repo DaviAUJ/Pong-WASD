@@ -4,7 +4,7 @@ public class MovimentoBola : MonoBehaviour {
     public float velocidadeMax = 40f;
     public float velocidade = 6.4f;
     public float incremento = 0.8f;
-    public float anguloAdicionalRad = Mathf.PI / 9; // 20 graus
+    public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
 
     public Vector2 direcao;
     private Rigidbody2D rb;
