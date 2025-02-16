@@ -5,26 +5,37 @@ public class Jogador : MonoBehaviour {
     public string nome = "jogador";
     public int pontosVitoria = 10;
     public Contador contadorRelacionado;
-    public float poder = 0;
+    public float PontosPoder = 0;
     public float limiteInferior = 0.2f;
     public float limiteSuperior = 0.9f;
 
     private Partida partidaRelacionada;
     private int pontos = 0;
 
-
+    public Poderes poder;
     
     private void Start() {
+        
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
+
+        poder = new Solaire();
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
+
+
         if(colisao.gameObject.CompareTag("Bola")) {
-            float teste = PegarPosYRelativa(colisao.gameObject);
+    
+            PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
 
-            Debug.Log(teste);
+            if (PontosPoder >= poder.EnergiaMaxima) 
+            {
 
-            poder += FuncaoPoder(teste);
+                poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>());
+                PontosPoder = 0;
+            }
+            
+
         }
     }
 
