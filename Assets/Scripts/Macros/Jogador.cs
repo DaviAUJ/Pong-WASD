@@ -1,5 +1,5 @@
-
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Jogador : MonoBehaviour {
     public string nome = "jogador";
@@ -8,6 +8,7 @@ public class Jogador : MonoBehaviour {
     public float PontosPoder = 0;
     public float limiteInferior = 0.2f;
     public float limiteSuperior = 0.9f;
+    public Slider medidorPoder;
 
     private Partida partidaRelacionada;
     private int pontos = 0;
@@ -15,19 +16,17 @@ public class Jogador : MonoBehaviour {
     public Poderes poder;
     
     private void Start() {
-        
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-
         poder = gameObject.AddComponent<Solaire>();
-
+        medidorPoder.maxValue = poder.EnergiaMaxima;
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
-
-
         if(colisao.gameObject.CompareTag("Bola")) {
     
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
+            medidorPoder.value = PontosPoder; // Atualiza o medidor
+
 
             if (PontosPoder >= poder.EnergiaMaxima) 
             {

@@ -59,8 +59,7 @@ public class MovimentoBola : MonoBehaviour {
             if(direcao.x < 0) {
                 aux *= -1;
             }
-
-            Debug.Log(sentidoBarra);
+            
             direcao.Set(
                 // Matriz de rotação
                 direcao.x * Mathf.Cos(aux) - direcao.y * Mathf.Sin(aux),
