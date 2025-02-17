@@ -4,17 +4,16 @@ using UnityEngine.UI;
 public class Jogador : MonoBehaviour {
     public string nome = "jogador";
     public int pontosVitoria = 10;
-    public Contador contadorRelacionado;
     public float PontosPoder = 0;
     public float limiteInferior = 0.2f;
     public float limiteSuperior = 0.9f;
     public Slider medidorPoder;
+    public Contador contadorRelacionado;
+    public Poderes poder;
 
     private Partida partidaRelacionada;
     private int pontos = 0;
 
-    public Poderes poder;
-    
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
         poder = gameObject.AddComponent<Solaire>();
