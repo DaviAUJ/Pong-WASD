@@ -5,7 +5,8 @@ public class MovimentoBola : MonoBehaviour {
     public float velocidade = 6.4f;
     public float incremento = 0.8f;
     public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
-
+    public Transform RaquetePlayer1;  // A referência à sua própria raquete
+    public Transform RaquetePlayer2;    // A referência à raquete do oponente
     public Vector2 direcao;
     private Rigidbody2D rb;
 

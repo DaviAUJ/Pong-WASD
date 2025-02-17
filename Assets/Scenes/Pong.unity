@@ -1353,9 +1353,10 @@ MonoBehaviour:
   nome: jogador2
   pontosVitoria: 2
   contadorRelacionado: {fileID: 1401095841}
-  poder: 0
+  PontosPoder: 0
   limiteInferior: 0.3
   limiteSuperior: 0.9
+  poder: {fileID: 0}
 --- !u!1 &1070693963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,9 +1956,10 @@ MonoBehaviour:
   nome: jogador1
   pontosVitoria: 2
   contadorRelacionado: {fileID: 1729371926}
-  poder: 0
+  PontosPoder: 0
   limiteInferior: 0.3
   limiteSuperior: 0.9
+  poder: {fileID: 0}
 --- !u!1 &1642818169
 GameObject:
   m_ObjectHideFlags: 0

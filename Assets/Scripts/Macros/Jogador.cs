@@ -18,7 +18,8 @@ public class Jogador : MonoBehaviour {
         
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
 
-        poder = new Solaire();
+        poder = gameObject.AddComponent<Solaire>();
+
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
@@ -31,7 +32,7 @@ public class Jogador : MonoBehaviour {
             if (PontosPoder >= poder.EnergiaMaxima) 
             {
 
-                poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>());
+                StartCoroutine(poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
             
