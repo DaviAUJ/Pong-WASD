@@ -1,3 +1,4 @@
+using Unity.Mathematics.Geometry;
 using UnityEngine;
 
 public class MovimentoBola : MonoBehaviour {
@@ -5,9 +6,9 @@ public class MovimentoBola : MonoBehaviour {
     public float velocidade = 6.4f;
     public float incremento = 0.8f;
     public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
-    public Transform RaquetePlayer1;  // A referência à sua própria raquete
-    public Transform RaquetePlayer2;    // A referência à raquete do oponente
     public Vector2 direcao;
+    public bool aplicarDesacelerao = false;
+
     private Rigidbody2D rb;
 
 
@@ -15,8 +16,12 @@ public class MovimentoBola : MonoBehaviour {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
 
-        // entre 20 e 60 graus
-        EscolherAnguloAleatorio(Mathf.PI / 9, Mathf.PI / 3);
+        // Escolhe um ângulo entre -45 e 45 e escolhe um lado
+        EscolherAnguloAleatorio(-Mathf.PI/ 4, Mathf.PI / 4);
+
+        if(Random.Range(0, 2) == 1) {
+            direcao.x *= -1;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
@@ -34,9 +39,9 @@ public class MovimentoBola : MonoBehaviour {
 
 
 
-    private void EscolherAnguloAleatorio(float minInclusivo, float maxInclusivo) {
-        // Gerando ângulo em radiano e depois determinando a qual quadrante do circulo unitário o ângulo pertence
-        float anguloRad = Random.Range(minInclusivo, maxInclusivo) + Random.Range(0, 4) * Mathf.PI / 2;
+    public void EscolherAnguloAleatorio(float minInclusivo, float maxInclusivo) {
+        // Gerando ângulo em radiano
+        float anguloRad = Random.Range(minInclusivo, maxInclusivo);
         direcao.Set(Mathf.Cos(anguloRad), Mathf.Sin(anguloRad));
     }
 
@@ -70,6 +75,8 @@ public class MovimentoBola : MonoBehaviour {
         direcao.x *= -1;
 
         IncrementarVelocidade();
+
+        // tenta aplicar desaceleração no oponente
     }
 
     private void ColisaoParede() {

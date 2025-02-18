@@ -16,7 +16,7 @@ public class Jogador : MonoBehaviour {
 
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = gameObject.AddComponent<Solaire>();
+        poder = ScriptableObject.CreateInstance<Solaire>();
         medidorPoder.maxValue = poder.EnergiaMaxima;
     }
 
@@ -26,18 +26,13 @@ public class Jogador : MonoBehaviour {
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
             medidorPoder.value = PontosPoder; // Atualiza o medidor
 
-
             if (PontosPoder >= poder.EnergiaMaxima) 
             {
-
                 StartCoroutine(poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
-            
-
         }
     }
-
 
     public void Pontuar() {
         pontos++;
