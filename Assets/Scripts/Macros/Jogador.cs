@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Jogador : MonoBehaviour {
     public string nome = "jogador";
     public int pontosVitoria = 10;
-    public float PontosPoder = 19.5f;
+    public float PontosPoder = 0;
     public float limiteInferior = 0.2f;
     public float limiteSuperior = 0.9f;
     public Slider medidorPoder;
@@ -16,7 +16,7 @@ public class Jogador : MonoBehaviour {
 
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = new Solaire();
+        poder = new Sans(gameObject);
         medidorPoder.maxValue = poder.EnergiaMaxima;
     }
 
@@ -26,7 +26,7 @@ public class Jogador : MonoBehaviour {
 
             if (PontosPoder >= poder.EnergiaMaxima) 
             {
-                StartCoroutine(poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
+                StartCoroutine(poder.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
 

@@ -32,6 +32,9 @@ public class MovimentoBola : MonoBehaviour {
         else if(colisao.gameObject.CompareTag("Parede")) {
             ColisaoParede();
         }
+        else if(colisao.gameObject.CompareTag("Barreira")) {
+            ColisaoBarreira();
+        }
     }
     
     private void FixedUpdate() {
@@ -49,7 +52,7 @@ public class MovimentoBola : MonoBehaviour {
     private void IncrementarVelocidade() {
         float prox = velocidade + incremento;
 
-        if(prox < velocidadeMax) {
+        if(prox <= velocidadeMax) {
             velocidade = prox;
         }
     }
@@ -87,5 +90,10 @@ public class MovimentoBola : MonoBehaviour {
 
     private void ColisaoParede() {
         direcao.y *= -1;
+    }
+
+    private void ColisaoBarreira() {
+        direcao.x *= -1;
+        IncrementarVelocidade();
     }
 }

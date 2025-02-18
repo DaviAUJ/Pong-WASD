@@ -1551,6 +1551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 10
+  velocidade: 0
   direcao: {x: 0, y: 0}
   movimento: {fileID: -7917762769590653632, guid: 8dbfa4468d1abcd418c1b34f0dd337dd, type: 3}
 --- !u!114 &788098922
@@ -1567,12 +1568,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: jogador2
   pontosVitoria: 2
-  PontosPoder: 19.5
+  PontosPoder: 24.5
   limiteInferior: 0.3
   limiteSuperior: 0.9
   medidorPoder: {fileID: 538156926}
   contadorRelacionado: {fileID: 1401095841}
-  poder: {fileID: 0}
 --- !u!1 &799068467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 10
+  velocidade: 0
   direcao: {x: 0, y: 0}
   movimento: {fileID: -7917762769590653632, guid: f3a0dc86ab0ee024abc19d1fbd3d22ce, type: 3}
 --- !u!114 &1459318164
@@ -2335,7 +2336,6 @@ MonoBehaviour:
   limiteSuperior: 0.9
   medidorPoder: {fileID: 799068469}
   contadorRelacionado: {fileID: 1729371926}
-  poder: {fileID: 0}
 --- !u!1 &1704146179
 GameObject:
   m_ObjectHideFlags: 0

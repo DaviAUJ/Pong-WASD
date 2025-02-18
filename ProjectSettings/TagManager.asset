@@ -8,6 +8,7 @@ TagManager:
   - Raquete
   - Gol
   - Bola
+  - Barreira
   layers:
   - Default
   - TransparentFX

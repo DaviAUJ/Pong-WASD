@@ -1,21 +1,22 @@
-using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class Solaire : Poderes
 {
     private float tempoParado = 1f; 
     private float multiplicadorVelocidade = 1.5f;
+    private float multiplicadorLentidao = 0.4f;
 
-    public Solaire()
+    public Solaire(GameObject raquete)
     {
         EnergiaMaxima = 20;
         Nome = "Solaire";
+        tempoHabilidade = 8f;
+
+        raqueteRelacionada = raquete;
     }
 
-    public override IEnumerator ativar(MovimentoBola bola)
+    public override IEnumerator Ativar(MovimentoBola bola)
     {
         // Tempo antes de paralizar
         yield return new WaitForSecondsRealtime(0.05f);
@@ -39,7 +40,6 @@ public class Solaire : Poderes
         bola.velocidade += velocidadeAntiga * multiplicadorVelocidade;
 
         // Envia um debuff junto com a bola e tenta aplicar no oponente
-        bola.lentidao = new Lentidao(8f, 0.4f);
+        bola.lentidao = new Lentidao(tempoHabilidade, multiplicadorLentidao);
     }
-
 }
