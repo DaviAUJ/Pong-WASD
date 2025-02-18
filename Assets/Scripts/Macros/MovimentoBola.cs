@@ -1,4 +1,4 @@
-using Unity.Mathematics.Geometry;
+using System.Collections;
 using UnityEngine;
 
 public class MovimentoBola : MonoBehaviour {
@@ -7,7 +7,7 @@ public class MovimentoBola : MonoBehaviour {
     public float incremento = 0.8f;
     public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
     public Vector2 direcao;
-    public bool aplicarDesacelerao = false;
+    public Lentidao lentidao;
 
     private Rigidbody2D rb;
 
@@ -15,9 +15,10 @@ public class MovimentoBola : MonoBehaviour {
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
+        lentidao = null;
 
         // Escolhe um ângulo entre -45 e 45 e escolhe um lado
-        EscolherAnguloAleatorio(-Mathf.PI/ 4, Mathf.PI / 4);
+        EscolherAnguloAleatorio(-1 * Mathf.PI/ 4, Mathf.PI / 4);
 
         if(Random.Range(0, 2) == 1) {
             direcao.x *= -1;
@@ -26,7 +27,7 @@ public class MovimentoBola : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D colisao) {
         if(colisao.gameObject.CompareTag("Raquete")) {
-            ColisaoRaquete(colisao.gameObject.GetComponent<MovimentoRaquete>().direcao.y);
+            ColisaoRaquete(colisao.gameObject.GetComponent<MovimentoRaquete>());
         }
         else if(colisao.gameObject.CompareTag("Parede")) {
             ColisaoParede();
@@ -53,12 +54,13 @@ public class MovimentoBola : MonoBehaviour {
         }
     }
 
-    private void ColisaoRaquete(float sentidoBarra) {
+    private void ColisaoRaquete(MovimentoRaquete raquete) {
+        float sentidoBarra = raquete.direcao.y;
+
         // verificando se a bolinha vai ficar num ângulo aceitável para a situação
         if(sentidoBarra > 0 && direcao.y <= 0.70f || sentidoBarra < 0 && direcao.y >= -0.70f) {
             float aux = sentidoBarra * anguloAdicionalRad;
 
-            // Solução provisória que funciona
             // A barrinha da esquerda fica com as propriedades de conservação de momento invertidas
             // Isso aqui resolve
             if(direcao.x < 0) {
@@ -77,6 +79,10 @@ public class MovimentoBola : MonoBehaviour {
         IncrementarVelocidade();
 
         // tenta aplicar desaceleração no oponente
+        if(lentidao != null) {
+            raquete.AplicarLentidao(lentidao);
+            lentidao = null;
+        }
     }
 
     private void ColisaoParede() {

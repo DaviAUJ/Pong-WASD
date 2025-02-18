@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Jogador : MonoBehaviour {
     public string nome = "jogador";
     public int pontosVitoria = 10;
-    public float PontosPoder = 0;
+    public float PontosPoder = 19.5f;
     public float limiteInferior = 0.2f;
     public float limiteSuperior = 0.9f;
     public Slider medidorPoder;
@@ -16,21 +16,21 @@ public class Jogador : MonoBehaviour {
 
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = ScriptableObject.CreateInstance<Solaire>();
+        poder = new Solaire();
         medidorPoder.maxValue = poder.EnergiaMaxima;
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
         if(colisao.gameObject.CompareTag("Bola")) {
-    
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
-            medidorPoder.value = PontosPoder; // Atualiza o medidor
 
             if (PontosPoder >= poder.EnergiaMaxima) 
             {
                 StartCoroutine(poder.ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
+
+            medidorPoder.value = PontosPoder; // Atualiza o medidor
         }
     }
 
@@ -62,7 +62,6 @@ public class Jogador : MonoBehaviour {
 
         return Mathf.Max((Mathf.Pow(pos, 2) - a2) / (Mathf.Pow(limiteSuperior, 2) - a2), 0);
     }
-
 
     // Pega a posição y relativa entre jogador e um objeto qualquer
     // A coordenada é baseada em 1 ser o topo do jogador e -1 a base

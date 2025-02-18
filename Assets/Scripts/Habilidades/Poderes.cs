@@ -1,9 +1,7 @@
 using System.Collections;
-using UnityEngine;
-
 
 //Superclasse para poderes
-public abstract class Poderes : ScriptableObject
+public abstract class Poderes
 {
     public int EnergiaMaxima = 10;
     public string Nome = "";
