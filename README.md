@@ -3,6 +3,18 @@
 ## Descrição
 Power Pong é um jogo inspirado no clássico Pong, desenvolvido em Unity. O jogo apresenta um sistema de pontuação e movimentação dinâmica das raquetes, proporcionando uma experiência divertida e desafiadora.
 
+**Trailer do Jogo:**
+
+[Assista ao trailer de Power Pong](https://www.youtube.com/watch?v=kkbGb9PVLRY)
+
+*Em um mundo onde velocidade e estratégia definem os vencedores.*  
+*Dois jogadores. Duas raquetes. Um único objetivo: **DOMINAR A ARENA!***  
+*Cada movimento conta. Cada golpe pode mudar o destino da partida.*  
+*Mas aqui, não é só sobre reflexos. Poderes especiais podem virar o jogo a qualquer momento!*  
+*A velocidade aumenta. A pressão cresce. E apenas os mais rápidos e estratégicos conseguirão alcançar a **VITÓRIA!***  
+*Power Pong - Clássico, rápido e agora, ainda mais **PODEROSO!***  
+*Disponível agora. Você está pronto para o desafio?*
+
 ## Como Jogar
 - O objetivo do jogo é marcar pontos ao fazer com que a bola ultrapasse a raquete adversária.
 - O primeiro jogador a atingir a pontuação máxima vence a partida.
