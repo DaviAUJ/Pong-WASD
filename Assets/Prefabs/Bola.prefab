@@ -162,7 +162,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &-3928742722595901983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,8 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadeMax: 40
-  velocidade: 10
+  velocidade: 6.4
   incremento: 0.8
   anguloAdicionalRad: 0.17453294
   direcao: {x: 0, y: 0}
-  aplicarDesacelerao: 0

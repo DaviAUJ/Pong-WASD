@@ -1,10 +1,11 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Sans : Poderes {
     private GameObject objetoBarreira;
+
+
 
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;

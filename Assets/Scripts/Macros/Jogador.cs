@@ -16,15 +16,15 @@ public class Jogador : MonoBehaviour {
 
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = new Sans(gameObject);
-        medidorPoder.maxValue = poder.EnergiaMaxima;
+        poder = new Fantasma(gameObject);
+        medidorPoder.maxValue = poder.GetEnergiaMaxima();
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
         if(colisao.gameObject.CompareTag("Bola")) {
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
 
-            if (PontosPoder >= poder.EnergiaMaxima) 
+            if (PontosPoder >= poder.GetEnergiaMaxima()) 
             {
                 StartCoroutine(poder.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
@@ -41,9 +41,6 @@ public class Jogador : MonoBehaviour {
 
         if(pontosVitoria <= pontos) {
             Vencer();
-        }
-        else {
-            partidaRelacionada.CriarBola();
         }
     }
 

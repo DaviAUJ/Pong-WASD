@@ -9,11 +9,11 @@ public class MovimentoBola : MonoBehaviour {
     public Vector2 direcao;
     public Lentidao lentidao;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
 
 
-    private void Start() {
+    protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
         lentidao = null;
 
@@ -34,6 +34,9 @@ public class MovimentoBola : MonoBehaviour {
         }
         else if(colisao.gameObject.CompareTag("Barreira")) {
             ColisaoBarreira();
+        }
+        else if(colisao.gameObject.CompareTag("BolaFantasma")) {
+            ColisaoBola(colisao.gameObject);
         }
     }
     
@@ -95,5 +98,9 @@ public class MovimentoBola : MonoBehaviour {
     private void ColisaoBarreira() {
         direcao.x *= -1;
         IncrementarVelocidade();
+    }
+
+    private void ColisaoBola(GameObject outraBola) {
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), outraBola.GetComponent<BoxCollider2D>());
     }
 }

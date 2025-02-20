@@ -9,6 +9,7 @@ TagManager:
   - Gol
   - Bola
   - Barreira
+  - BolaFantasma
   layers:
   - Default
   - TransparentFX
