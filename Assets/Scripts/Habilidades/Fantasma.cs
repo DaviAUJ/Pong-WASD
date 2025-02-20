@@ -7,6 +7,7 @@ public class Fantasma : Poderes {
     private Color corBola;
 
 
+
     public Fantasma(GameObject raquete) {
         EnergiaMaxima = 15;
         Nome = "Fantasma";

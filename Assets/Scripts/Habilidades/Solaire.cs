@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Solaire : Poderes
@@ -39,7 +40,9 @@ public class Solaire : Poderes
 
         bola.velocidade += velocidadeAntiga * multiplicadorVelocidade;
 
-        // Envia um debuff junto com a bola e tenta aplicar no oponente
-        bola.lentidao = new Lentidao(tempoHabilidade, multiplicadorLentidao);
+        // Tenta aplicar lentidão no oponente
+        EfeitoSolaire efeito = bola.AddComponent<EfeitoSolaire>();
+        efeito.SetLentidao(new Lentidao(tempoHabilidade, multiplicadorLentidao));
+        efeito.SetDono(raqueteRelacionada);
     }
 }

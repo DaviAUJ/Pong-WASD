@@ -14,9 +14,11 @@ public class Jogador : MonoBehaviour {
     private Partida partidaRelacionada;
     private int pontos = 0;
 
+
+
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = new Fantasma(gameObject);
+        poder = new Solaire(gameObject);
         medidorPoder.maxValue = poder.GetEnergiaMaxima();
     }
 
@@ -33,6 +35,8 @@ public class Jogador : MonoBehaviour {
             medidorPoder.value = PontosPoder; // Atualiza o medidor
         }
     }
+
+    
 
     public void Pontuar() {
         pontos++;

@@ -1569,7 +1569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nome: jogador2
   pontosVitoria: 2
-  PontosPoder: 0
+  PontosPoder: 19.5
   limiteInferior: 0.3
   limiteSuperior: 0.9
   medidorPoder: {fileID: 538156926}

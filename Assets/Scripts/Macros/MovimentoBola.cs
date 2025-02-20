@@ -7,7 +7,6 @@ public class MovimentoBola : MonoBehaviour {
     public float incremento = 0.8f;
     public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
     public Vector2 direcao;
-    public Lentidao lentidao;
 
     protected Rigidbody2D rb;
 
@@ -15,7 +14,6 @@ public class MovimentoBola : MonoBehaviour {
 
     protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
-        lentidao = null;
 
         // Escolhe um ângulo entre -45 e 45 e escolhe um lado
         EscolherAnguloAleatorio(-1 * Mathf.PI/ 4, Mathf.PI / 4);
@@ -60,7 +58,7 @@ public class MovimentoBola : MonoBehaviour {
         }
     }
 
-    private void ColisaoRaquete(MovimentoRaquete raquete) {
+    protected virtual void ColisaoRaquete(MovimentoRaquete raquete) {
         float sentidoBarra = raquete.direcao.y;
 
         // verificando se a bolinha vai ficar num ângulo aceitável para a situação
@@ -83,12 +81,6 @@ public class MovimentoBola : MonoBehaviour {
         direcao.x *= -1;
 
         IncrementarVelocidade();
-
-        // tenta aplicar desaceleração no oponente
-        if(lentidao != null) {
-            raquete.AplicarLentidao(lentidao);
-            lentidao = null;
-        }
     }
 
     private void ColisaoParede() {
