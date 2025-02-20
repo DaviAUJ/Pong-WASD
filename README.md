@@ -5,7 +5,7 @@ Power Pong é um jogo inspirado no clássico Pong, desenvolvido em Unity. O jogo
 
 **Trailer do Jogo:**
 
-[Assista ao trailer de Power Pong](https://www.youtube.com/watch?v=kkbGb9PVLRY)
+[Assista ao trailer de Power Pong](https://youtu.be/QwY2i_If-mQ)
 
 *Em um mundo onde velocidade e estratégia definem os vencedores.*  
 *Dois jogadores. Duas raquetes. Um único objetivo: **DOMINAR A ARENA!***  
