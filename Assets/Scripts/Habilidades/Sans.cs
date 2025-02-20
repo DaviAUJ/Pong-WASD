@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Sans : Poderes {
     private GameObject objetoBarreira;
-
+    private Animator anim;
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;
         Nome = "Sans";
-        tempoHabilidade = 5f;
+        tempoHabilidade = 20f;
 
         raqueteRelacionada = raquete;
 
@@ -20,16 +20,18 @@ public class Sans : Poderes {
             Quaternion.identity,
             GameObject.Find("Partida").transform
         );
-        
+
         // Começa desabilitado
         objetoBarreira.SetActive(false);
     }
-    
+
 
 
     public override IEnumerator Ativar(MovimentoBola bola) {
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
+
+     
 
         yield return new WaitForSecondsRealtime(tempoHabilidade);
 
