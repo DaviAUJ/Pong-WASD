@@ -6,27 +6,41 @@ public class Solaire : Poderes
 {
     private float tempoParado = 1f; 
     private float multiplicadorVelocidade = 1.5f;
-    private float multiplicadorLentidao = 0.4f;
+    private float multiplicadorLentidao = 0.5f;
 
-    public Solaire(GameObject raquete)
-    {
+
+
+    public Solaire() {
         EnergiaMaxima = 20;
         Nome = "Solaire";
         tempoHabilidade = 8f;
 
-        raqueteRelacionada = raquete;
+        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
     }
+
+    public Solaire(GameObject raquete) {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+
+        SetRaqueteRelacionada(raquete);
+        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
+    }
+
+
 
     public override IEnumerator Ativar(MovimentoBola bola)
     {
         // Tempo antes de paralizar
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        GerenciadorSFX.Tocar(efeitoAtivacao);
 
         // Paralizar a Bola por um determinado tempo
         float velocidadeAntiga = bola.velocidade;
         bola.velocidade = 0;
         
-        yield return new WaitForSecondsRealtime(tempoParado);
+        yield return new WaitForSeconds(tempoParado);
 
         //Dispara a bola na direção do oponente
         if(bola.direcao.x > 0) {

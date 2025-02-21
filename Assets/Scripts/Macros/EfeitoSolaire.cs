@@ -4,6 +4,8 @@ public class EfeitoSolaire : MonoBehaviour {
     private Lentidao lentidao;
     private GameObject dono;
 
+
+
     private void OnCollisionEnter2D(Collision2D colisao) {
         GameObject objetoColidido = colisao.gameObject;
 
@@ -12,6 +14,8 @@ public class EfeitoSolaire : MonoBehaviour {
             lentidao = null;
         }
     }
+
+    
 
     public void SetLentidao(Lentidao lentidao) {
         this.lentidao = lentidao;

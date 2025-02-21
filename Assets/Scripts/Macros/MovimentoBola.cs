@@ -10,6 +10,8 @@ public class MovimentoBola : MonoBehaviour {
 
     protected Rigidbody2D rb;
 
+    [SerializeField] private AudioClip[] efeitosSonoros;
+
 
 
     protected virtual void Start() {
@@ -81,6 +83,9 @@ public class MovimentoBola : MonoBehaviour {
         direcao.x *= -1;
 
         IncrementarVelocidade();
+
+        // Por algum o lado esquerdo é o positivo no Stereo Pan
+        GerenciadorSFX.TocarAleatorio(efeitosSonoros, Mathf.Sign(direcao.x) * -0.5f); 
     }
 
     private void ColisaoParede() {

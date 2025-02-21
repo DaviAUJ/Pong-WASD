@@ -180,3 +180,7 @@ MonoBehaviour:
   incremento: 0.8
   anguloAdicionalRad: 0.17453294
   direcao: {x: 0, y: 0}
+  efeitosSonoros:
+  - {fileID: 8300000, guid: 889b49c3220fe21448fe309da1ff0d93, type: 3}
+  - {fileID: 8300000, guid: 2a01ba1dabe90b6428a18a8e8a989eff, type: 3}
+  - {fileID: 8300000, guid: bb4667e4387cd714baac8ca50b57d7b1, type: 3}
