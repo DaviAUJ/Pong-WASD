@@ -7,10 +7,18 @@ using UnityEngine.UI;
 public class SelecaoDePoder : MonoBehaviour {
     [SerializeField] private ToggleGroup escolhaP1;
     [SerializeField] private ToggleGroup escolhaP2;
-    [SerializeField] private TMP_Text inputNomeP1;
-    [SerializeField] private TMP_Text inputNomeP2;
+    [SerializeField] private TMP_InputField inputNomeP1;
+    [SerializeField] private TMP_InputField inputNomeP2;
 
+    void Start() {
+        if(!Configuracoes.nomeP1.Equals("Jogador1")) {
+            inputNomeP1.text = Configuracoes.nomeP1;
+        }
 
+        if(!Configuracoes.nomeP2.Equals("Jogador2")) {
+            inputNomeP2.text = Configuracoes.nomeP2;
+        }
+    }
 
     public void Confirmar() {
         Toggle ativoP1 = escolhaP1.ActiveToggles().FirstOrDefault();
