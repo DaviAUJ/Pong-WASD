@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 3607124038535836537}
   - component: {fileID: 8827429912042204802}
   - component: {fileID: 4236989948933946573}
-  - component: {fileID: -111380049312372983}
+  - component: {fileID: -3928742722595901983}
   m_Layer: 0
   m_Name: Bola
-  m_TagString: Untagged
+  m_TagString: Bola
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,8 +162,8 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!114 &-111380049312372983
+  m_Constraints: 4
+--- !u!114 &-3928742722595901983
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,5 +178,5 @@ MonoBehaviour:
   velocidadeMax: 40
   velocidade: 6.4
   incremento: 0.8
-  anguloAdicionalRad: 0.34906587
+  anguloAdicionalRad: 0.17453294
   direcao: {x: 0, y: 0}
