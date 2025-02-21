@@ -57,7 +57,6 @@ public class Jogador : MonoBehaviour {
     // Função que calcula o poder baseado na posição do jogador
     // insira o codigo abaixo no desmos e adicione os controles deslizantes para visualizar a função
     // \max\left(\frac{1+a^{2}}{b^{2}}x^{2}-a^{2},0\right)
-    
     private float FuncaoPoder(float pos) {
         float a2 = Mathf.Pow(limiteInferior, 2);
 

@@ -9,6 +9,8 @@ public abstract class Poderes
     protected float tempoHabilidade = 2f;
     protected GameObject raqueteRelacionada;
 
+
+
     public abstract IEnumerator Ativar(MovimentoBola bola);
 
     public int GetEnergiaMaxima() {

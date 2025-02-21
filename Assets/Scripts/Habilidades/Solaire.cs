@@ -8,6 +8,8 @@ public class Solaire : Poderes
     private float multiplicadorVelocidade = 1.5f;
     private float multiplicadorLentidao = 0.4f;
 
+
+
     public Solaire(GameObject raquete)
     {
         EnergiaMaxima = 20;
@@ -16,6 +18,8 @@ public class Solaire : Poderes
 
         raqueteRelacionada = raquete;
     }
+
+
 
     public override IEnumerator Ativar(MovimentoBola bola)
     {

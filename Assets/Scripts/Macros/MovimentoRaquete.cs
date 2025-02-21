@@ -8,9 +8,7 @@ public class MovimentoRaquete : MonoBehaviour {
     public Vector2 direcao;
 
     private Rigidbody2D rb;
-
-    [SerializeField]
-    private InputActionReference movimento;
+    [SerializeField] private InputActionReference movimento;
 
 
 
@@ -39,6 +37,5 @@ public class MovimentoRaquete : MonoBehaviour {
         yield return new WaitForSecondsRealtime(lentidao.GetDuracao());
 
         velocidade = velocidadeMax;
-        Debug.Log("voltou");
     }
 }
