@@ -39,22 +39,16 @@ public class Sans : Poderes {
     }
 
     public override IEnumerator Ativar(MovimentoBola bola) {
-        Time.timeScale = 0f;
+        
 
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
-
-
        
+        
+
         AtivarAnimacaoTimeline();
 
-        while (playableDirector.state == PlayState.Playing)
-        {
-            yield return null;  // Espera até a animação terminar
-        }
 
-        // Depois que a animação terminar, retoma o jogo
-        Time.timeScale = 1f;
 
         yield return new WaitForSecondsRealtime(tempoHabilidade);
 
@@ -67,19 +61,30 @@ public class Sans : Poderes {
 
     void AtivarAnimacaoTimeline()
     {
-
+       
+        
         if (playableDirector != null)
         {
             // Verifica se o PlayableDirector não está tocando a animação
             if (playableDirector.state != PlayState.Playing)
             {
+               
                 playableDirector.Play();
+              
+                
             }
+             else
+                 {
+                  Debug.LogWarning("PlayableDirector não foi atribuído!");
+                  
+            }
+
+            
+
         }
-        else
-        {
-            Debug.LogWarning("PlayableDirector não foi atribuído!");
-        }
+       
+
+
 
     }
 

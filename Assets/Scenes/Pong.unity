@@ -514,7 +514,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1287,7 +1287,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1977,7 +1977,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -7443756053782179069, guid: 32a7c460eb97bdf45b35db9d422c3fcb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: -0.1139065}
+  m_Color: {r: 1, g: 1, b: 1, a: -0.1559766}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2354,6 +2354,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1436535784}
   - component: {fileID: 1436535785}
+  - component: {fileID: 1436535787}
+  - component: {fileID: 1436535786}
   m_Layer: 0
   m_Name: Partida
   m_TagString: Untagged
@@ -2396,6 +2398,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bola: {fileID: 1483067475248117461, guid: a27fe2fb9a9392a4e8705c0f3283f53c, type: 3}
   textoVitoria: {fileID: 43127431}
+--- !u!114 &1436535786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436535783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796787af21392342895677ef637bf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 788098923}
+  RaqueteP1: {fileID: 1459318156}
+  RaqueteP2: {fileID: 788098914}
+  Bola: {fileID: 1483067475248117461, guid: a27fe2fb9a9392a4e8705c0f3283f53c, type: 3}
+--- !u!114 &1436535787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436535783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b796787af21392342895677ef637bf6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 1459318165}
+  RaqueteP1: {fileID: 1459318156}
+  RaqueteP2: {fileID: 788098914}
+  Bola: {fileID: 1483067475248117461, guid: a27fe2fb9a9392a4e8705c0f3283f53c, type: 3}
 --- !u!1 &1459318156
 GameObject:
   m_ObjectHideFlags: 0

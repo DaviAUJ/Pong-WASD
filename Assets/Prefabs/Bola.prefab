@@ -180,4 +180,3 @@ MonoBehaviour:
   incremento: 0.8
   anguloAdicionalRad: 0.17453294
   direcao: {x: 0, y: 0}
-  aplicarDesacelerao: 0
