@@ -13,7 +13,8 @@ public class Jogador : MonoBehaviour {
 
     private Partida partidaRelacionada;
     private int pontos = 0;
-
+    [SerializeField] AudioClip EfeitoPonto;
+    [SerializeField] AudioClip EfeitoVitoria;
 
 
     private void Start() {
@@ -27,6 +28,10 @@ public class Jogador : MonoBehaviour {
         else if(gameObject.name.Equals("RaqueteP2")) {
             poder = Configuracoes.poderP2;
             nome = Configuracoes.nomeP2;
+        }
+
+        if(poder == null) {
+            poder = new Solaire(gameObject);
         }
 
         poder.SetRaqueteRelacionada(gameObject);
@@ -56,6 +61,10 @@ public class Jogador : MonoBehaviour {
 
         if(pontosVitoria <= pontos) {
             Vencer();
+            GerenciadorSFX.Tocar(EfeitoVitoria);
+        }
+        else {
+            GerenciadorSFX.Tocar(EfeitoPonto);
         }
     }
 

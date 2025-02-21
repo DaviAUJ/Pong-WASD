@@ -6,8 +6,8 @@ public class Configuracoes {
     public static string nomeP2 = "Jogador2";
     public static Poderes poderP1;
     public static Poderes poderP2;
-    private static float volumeMusica;
-    private static float volumeEfeitosSonoros;
+    private static float volumeMusica = 1f;
+    private static float volumeEfeitosSonoros = 1f;
 
     public static float GetVolumeMusica() {
         return volumeMusica;

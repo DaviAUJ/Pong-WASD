@@ -1977,6 +1977,8 @@ MonoBehaviour:
   limiteSuperior: 0.9
   medidorPoder: {fileID: 538156926}
   contadorRelacionado: {fileID: 1401095841}
+  EfeitoPonto: {fileID: 8300000, guid: db8367ccc4ecfc2469e953864457ae40, type: 3}
+  EfeitoVitoria: {fileID: 8300000, guid: d4508b45361e3814ab64e0cc13a89f57, type: 3}
 --- !u!1 &799068467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,6 +2746,8 @@ MonoBehaviour:
   limiteSuperior: 0.9
   medidorPoder: {fileID: 799068469}
   contadorRelacionado: {fileID: 1729371926}
+  EfeitoPonto: {fileID: 8300000, guid: db8367ccc4ecfc2469e953864457ae40, type: 3}
+  EfeitoVitoria: {fileID: 8300000, guid: d4508b45361e3814ab64e0cc13a89f57, type: 3}
 --- !u!1 &1704146179
 GameObject:
   m_ObjectHideFlags: 0

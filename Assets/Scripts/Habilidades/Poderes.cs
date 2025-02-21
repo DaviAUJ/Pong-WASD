@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 
 //Superclasse para poderes
@@ -8,6 +9,7 @@ public abstract class Poderes
     protected string Nome = "";
     protected float tempoHabilidade = 2f;
     protected GameObject raqueteRelacionada;
+    protected AudioClip efeitoAtivacao;
 
 
 
@@ -19,5 +21,11 @@ public abstract class Poderes
 
     public virtual void SetRaqueteRelacionada(GameObject raquete) {
         raqueteRelacionada = raquete;
+    }
+
+    // por que eu só não fiz os poderes herdarem MonoBehavior? Saudade de um SerializeField :(
+    // Pelo menos eu aprendi algo
+    protected void CarregarSom(string caminho) {
+        efeitoAtivacao = (AudioClip) AssetDatabase.LoadAssetAtPath(caminho, typeof(AudioClip));
     }
 }

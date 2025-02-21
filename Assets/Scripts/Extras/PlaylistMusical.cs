@@ -11,7 +11,10 @@ public class PlaylistMusical : MonoBehaviour {
 
     private void Start() {
         index = 0;
+        
         jukebox = gameObject.GetComponent<AudioSource>();
+        jukebox.volume = Configuracoes.GetVolumeMusica();
+
         Embaralhar();
         StartCoroutine(Loop());
     }

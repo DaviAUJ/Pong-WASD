@@ -5,12 +5,15 @@ using UnityEngine;
 public class Fantasma : Poderes {
     private GameObject bolaFantasma;
     private Color corBola;
+    
 
 
     public Fantasma() {
         EnergiaMaxima = 20;
         Nome = "Solaire";
         tempoHabilidade = 8f;
+
+        CarregarSom("Assets/EfeitosSonoros/Fantasma.wav");
     }
 
     public Fantasma(GameObject raquete) {
@@ -19,6 +22,7 @@ public class Fantasma : Poderes {
         tempoHabilidade = 30f;
 
         SetRaqueteRelacionada(raquete);
+        CarregarSom("Assets/EfeitosSonoros/Fantasma.wav");
     }
 
 
@@ -26,6 +30,7 @@ public class Fantasma : Poderes {
     public override IEnumerator Ativar(MovimentoBola bola) {
         yield return new WaitForSeconds(0.05f);
 
+        GerenciadorSFX.Tocar(efeitoAtivacao);
         CriarFantasma(bola);
 
         yield return new WaitForSeconds(tempoHabilidade);

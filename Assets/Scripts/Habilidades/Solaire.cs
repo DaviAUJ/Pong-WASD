@@ -14,6 +14,8 @@ public class Solaire : Poderes
         EnergiaMaxima = 20;
         Nome = "Solaire";
         tempoHabilidade = 8f;
+
+        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
     }
 
     public Solaire(GameObject raquete) {
@@ -22,6 +24,7 @@ public class Solaire : Poderes
         tempoHabilidade = 8f;
 
         SetRaqueteRelacionada(raquete);
+        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
     }
 
 
@@ -30,6 +33,8 @@ public class Solaire : Poderes
     {
         // Tempo antes de paralizar
         yield return new WaitForSeconds(0.05f);
+
+        GerenciadorSFX.Tocar(efeitoAtivacao);
 
         // Paralizar a Bola por um determinado tempo
         float velocidadeAntiga = bola.velocidade;

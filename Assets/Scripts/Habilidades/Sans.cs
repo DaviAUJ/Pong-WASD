@@ -11,6 +11,8 @@ public class Sans : Poderes {
         EnergiaMaxima = 20;
         Nome = "Solaire";
         tempoHabilidade = 8f;
+
+        CarregarSom("Assets/EfeitosSonoros/Mega.wav");
     }
 
     public Sans(GameObject raquete) {
@@ -19,11 +21,16 @@ public class Sans : Poderes {
         tempoHabilidade = 5f;
 
         SetRaqueteRelacionada(raquete);
+        CarregarSom("Assets/EfeitosSonoros/Mega.wav");
     }
     
 
 
     public override IEnumerator Ativar(MovimentoBola bola) {
+        yield return new WaitForSeconds(0.05f);
+
+        GerenciadorSFX.Tocar(efeitoAtivacao);
+        
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
 
