@@ -16,4 +16,8 @@ public abstract class Poderes
     public int GetEnergiaMaxima() {
         return EnergiaMaxima;
     }
+
+    public virtual void SetRaqueteRelacionada(GameObject raquete) {
+        raqueteRelacionada = raquete;
+    }
 }

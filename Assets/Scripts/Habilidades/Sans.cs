@@ -7,23 +7,18 @@ public class Sans : Poderes {
 
 
 
+    public Sans() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+    }
+
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;
         Nome = "Sans";
         tempoHabilidade = 5f;
 
-        raqueteRelacionada = raquete;
-
-        // Pega o prefab e instancia ele atrás da raquete e filho de Partida
-        objetoBarreira = MonoBehaviour.Instantiate(
-            (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BarreiraSans.prefab", typeof(GameObject)), 
-            new Vector3(raquete.transform.position.x * 1.05f, 0, 0), 
-            Quaternion.identity,
-            GameObject.Find("Partida").transform
-        );
-        
-        // Começa desabilitado
-        objetoBarreira.SetActive(false);
+        SetRaqueteRelacionada(raquete);
     }
     
 
@@ -54,5 +49,23 @@ public class Sans : Poderes {
             sprite.color.b,
             valor
         );
+    }
+
+    public override void SetRaqueteRelacionada(GameObject raquete) {
+        base.SetRaqueteRelacionada(raquete);
+        CriarBarreira();
+    }
+
+    private void CriarBarreira() {
+        // Pega o prefab e instancia ele atrás da raquete e filho de Partida
+        objetoBarreira = MonoBehaviour.Instantiate(
+            (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BarreiraSans.prefab", typeof(GameObject)), 
+            new Vector3(raqueteRelacionada.transform.position.x * 1.05f, 0, 0), 
+            Quaternion.identity,
+            GameObject.Find("Partida").transform
+        );
+        
+        // Começa desabilitado
+        objetoBarreira.SetActive(false);
     }
 }

@@ -18,7 +18,18 @@ public class Jogador : MonoBehaviour {
 
     private void Start() {
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = new Solaire(gameObject);
+        
+        // Isso aqui não tá certo mas funciona e precisa entregar hoje
+        if(gameObject.name.Equals("RaqueteP1")) {
+            poder = Configuracoes.poderP1;
+            nome = Configuracoes.nomeP1;
+        }
+        else if(gameObject.name.Equals("RaqueteP2")) {
+            poder = Configuracoes.poderP2;
+            nome = Configuracoes.nomeP2;
+        }
+
+        poder.SetRaqueteRelacionada(gameObject);
         medidorPoder.maxValue = poder.GetEnergiaMaxima();
     }
 

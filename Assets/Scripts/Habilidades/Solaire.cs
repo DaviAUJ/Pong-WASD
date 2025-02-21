@@ -10,13 +10,18 @@ public class Solaire : Poderes
 
 
 
-    public Solaire(GameObject raquete)
-    {
+    public Solaire() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+    }
+
+    public Solaire(GameObject raquete) {
         EnergiaMaxima = 20;
         Nome = "Solaire";
         tempoHabilidade = 8f;
 
-        raqueteRelacionada = raquete;
+        SetRaqueteRelacionada(raquete);
     }
 
 

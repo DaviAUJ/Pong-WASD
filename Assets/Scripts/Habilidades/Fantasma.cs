@@ -7,22 +7,18 @@ public class Fantasma : Poderes {
     private Color corBola;
 
 
+    public Fantasma() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+    }
 
     public Fantasma(GameObject raquete) {
         EnergiaMaxima = 15;
         Nome = "Fantasma";
         tempoHabilidade = 30f;
 
-        raqueteRelacionada = raquete;
-
-        // Pega a cor da raquete
-        Color corRaquete = raquete.GetComponent<SpriteRenderer>().color; 
-        corBola = new Color(
-            corRaquete.r,
-            corRaquete.g,
-            corRaquete.b,
-            0.1f
-        );
+        SetRaqueteRelacionada(raquete);
     }
 
 
@@ -64,5 +60,21 @@ public class Fantasma : Poderes {
 
     private void DeletarFantasma() {
         MonoBehaviour.Destroy(bolaFantasma);
+    }
+
+    public override void SetRaqueteRelacionada(GameObject raquete) {
+        base.SetRaqueteRelacionada(raquete);
+        AplicarCorNaBola();
+    }
+
+    private void AplicarCorNaBola() {
+        // Pega a cor da raquete
+        Color corRaquete = raqueteRelacionada.GetComponent<SpriteRenderer>().color; 
+        corBola = new Color(
+            corRaquete.r,
+            corRaquete.g,
+            corRaquete.b,
+            0.1f
+        );
     }
 }
