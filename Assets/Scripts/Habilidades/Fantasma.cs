@@ -28,11 +28,11 @@ public class Fantasma : Poderes {
 
 
     public override IEnumerator Ativar(MovimentoBola bola) {
-        yield return new WaitForSecondsRealtime(0.05f);
+        yield return new WaitForSeconds(0.05f);
 
         CriarFantasma(bola);
 
-        yield return new WaitForSecondsRealtime(tempoHabilidade);
+        yield return new WaitForSeconds(tempoHabilidade);
 
         DeletarFantasma();
     }

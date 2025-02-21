@@ -32,7 +32,7 @@ public class Sans : Poderes {
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
 
-        yield return new WaitForSecondsRealtime(tempoHabilidade);
+        yield return new WaitForSeconds(tempoHabilidade);
 
         // Retorna a opacidade e desativa a Barreira
         MudarOpacidade(1f);

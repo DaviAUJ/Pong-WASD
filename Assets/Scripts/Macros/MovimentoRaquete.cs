@@ -34,7 +34,7 @@ public class MovimentoRaquete : MonoBehaviour {
     private IEnumerator RotinaLentidao(Lentidao lentidao) {
         velocidade *= lentidao.GetMultiplicador();
 
-        yield return new WaitForSecondsRealtime(lentidao.GetDuracao());
+        yield return new WaitForSeconds(lentidao.GetDuracao());
 
         velocidade = velocidadeMax;
     }

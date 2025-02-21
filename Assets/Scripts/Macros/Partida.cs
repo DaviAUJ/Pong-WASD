@@ -47,6 +47,8 @@ public class Partida : MonoBehaviour {
         foreach(GameObject item in deletar) {
             Destroy(item);
         }
+
+        menuPausa.SetActive(true);
     }
 
     private void ChecarPausa() {
