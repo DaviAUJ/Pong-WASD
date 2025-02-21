@@ -9,28 +9,41 @@ public class Jogador : MonoBehaviour {
     public float limiteSuperior = 0.9f;
     public Slider medidorPoder;
     public Contador contadorRelacionado;
-    public Poderes poder;
+    public Poderes poderP1;
+    public Poderes poderP2;
+    public GameObject RaqueteP1;
+    public GameObject RaqueteP2;
 
     private Partida partidaRelacionada;
     private int pontos = 0;
 
     private void Start() {
+
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poder = new Sans(gameObject);
-        medidorPoder.maxValue = poder.EnergiaMaxima;
+        poderP1 = new Sans(RaqueteP1);
+        poderP2 = new Sans(RaqueteP2);  // Poder associado à RaqueteP2
+        medidorPoder.maxValue = poderP1.EnergiaMaxima;
+        medidorPoder.maxValue = poderP2.EnergiaMaxima;
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
         if(colisao.gameObject.CompareTag("Bola")) {
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
 
-            if (PontosPoder >= poder.EnergiaMaxima) 
+            if (PontosPoder >= poderP1.EnergiaMaxima ) 
             {
-                StartCoroutine(poder.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
+                StartCoroutine(poderP1.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
+                PontosPoder = 0;
+            }
+            
+            if (PontosPoder >= poderP2.EnergiaMaxima)
+            {
+                StartCoroutine(poderP2.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
 
             medidorPoder.value = PontosPoder; // Atualiza o medidor
+          
         }
     }
 
