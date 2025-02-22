@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;  // Necessário para usar PlayableDirector
@@ -17,47 +16,58 @@ public class Sans : Poderes {
 
 
 
+
+
+    public Sans() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+
+        CarregarSom("EfeitosSonoros/Mega");
+    }
+
+
+
+    public Sans() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+
+        CarregarSom("EfeitosSonoros/Mega");
+    }
+
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;
         Nome = "Sans";
         tempoHabilidade = 9f;
 
-        raqueteRelacionada = raquete;
+        SetRaqueteRelacionada(raquete);
+        CarregarSom("EfeitosSonoros/Mega");
 
         timelineManager = GameObject.FindObjectOfType<TimelineManager>();
 
-        playableDirector = raquete.GetComponent<PlayableDirector>();
+        playableDirector = raqueteRelacionada.GetComponent<PlayableDirector>();
 
         if (playableDirector == null)
         {
             Debug.LogWarning("PlayableDirector não encontrado na raquete!");
         }
 
-        // Pega o prefab e instancia ele atrás da raquete e filho de Partida
-        objetoBarreira = MonoBehaviour.Instantiate(
-            (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BarreiraSans.prefab", typeof(GameObject)), 
-            new Vector3(raquete.transform.position.x * 1.05f, 0, 0), 
-            Quaternion.identity,
-            GameObject.Find("Partida").transform
-        );
-
         // Começa desabilitado
         objetoBarreira.SetActive(false);
     }
 
     public override IEnumerator Ativar(MovimentoBola bola) {
-        
+        yield return new WaitForSeconds(0.05f);
 
+        GerenciadorSFX.Tocar(efeitoAtivacao);
+        
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
-       
-        
 
         AtivarAnimacaoTimeline();
 
-
-
-        yield return new WaitForSecondsRealtime(tempoHabilidade);
+        yield return new WaitForSeconds(tempoHabilidade);
 
         // Retorna a opacidade e desativa a Barreira
         MudarOpacidade(1f);
@@ -111,5 +121,23 @@ public class Sans : Poderes {
             sprite.color.b,
             valor
         );
+    }
+
+    public override void SetRaqueteRelacionada(GameObject raquete) {
+        base.SetRaqueteRelacionada(raquete);
+        CriarBarreira();
+    }
+
+    private void CriarBarreira() {
+        // Pega o prefab e instancia ele atrás da raquete e filho de Partida
+        objetoBarreira = MonoBehaviour.Instantiate(
+            (GameObject) Resources.Load("Prefabs/BarreiraSans", typeof(GameObject)), 
+            new Vector3(raqueteRelacionada.transform.position.x * 1.05f, 0, 0), 
+            Quaternion.identity,
+            GameObject.Find("Partida").transform
+        );
+        
+        // Começa desabilitado
+        objetoBarreira.SetActive(false);
     }
 }

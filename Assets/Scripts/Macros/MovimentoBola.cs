@@ -7,15 +7,15 @@ public class MovimentoBola : MonoBehaviour {
     public float incremento = 0.8f;
     public float anguloAdicionalRad = Mathf.PI / 18; // 10 graus
     public Vector2 direcao;
-    public Lentidao lentidao;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
+
+    [SerializeField] private AudioClip[] efeitosSonoros;
 
 
 
-    private void Start() {
+    protected virtual void Start() {
         rb = GetComponent<Rigidbody2D>();
-        lentidao = null;
 
         // Escolhe um ângulo entre -45 e 45 e escolhe um lado
         EscolherAnguloAleatorio(-1 * Mathf.PI/ 4, Mathf.PI / 4);
@@ -34,6 +34,9 @@ public class MovimentoBola : MonoBehaviour {
         }
         else if(colisao.gameObject.CompareTag("Barreira")) {
             ColisaoBarreira();
+        }
+        else if(colisao.gameObject.CompareTag("BolaFantasma")) {
+            ColisaoBola(colisao.gameObject);
         }
     }
     
@@ -57,7 +60,7 @@ public class MovimentoBola : MonoBehaviour {
         }
     }
 
-    private void ColisaoRaquete(MovimentoRaquete raquete) {
+    protected virtual void ColisaoRaquete(MovimentoRaquete raquete) {
         float sentidoBarra = raquete.direcao.y;
 
         // verificando se a bolinha vai ficar num ângulo aceitável para a situação
@@ -81,11 +84,8 @@ public class MovimentoBola : MonoBehaviour {
 
         IncrementarVelocidade();
 
-        // tenta aplicar desaceleração no oponente
-        if(lentidao != null) {
-            raquete.AplicarLentidao(lentidao);
-            lentidao = null;
-        }
+        // Por algum o lado esquerdo é o positivo no Stereo Pan
+        GerenciadorSFX.TocarAleatorio(efeitosSonoros, Mathf.Sign(direcao.x) * -0.5f); 
     }
 
     private void ColisaoParede() {
@@ -95,5 +95,9 @@ public class MovimentoBola : MonoBehaviour {
     private void ColisaoBarreira() {
         direcao.x *= -1;
         IncrementarVelocidade();
+    }
+
+    private void ColisaoBola(GameObject outraBola) {
+        Physics2D.IgnoreCollision(GetComponent<BoxCollider2D>(), outraBola.GetComponent<BoxCollider2D>());
     }
 }

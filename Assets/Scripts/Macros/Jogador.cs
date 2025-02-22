@@ -16,21 +16,37 @@ public class Jogador : MonoBehaviour {
 
     private Partida partidaRelacionada;
     private int pontos = 0;
+    [SerializeField] AudioClip EfeitoPonto;
+    [SerializeField] AudioClip EfeitoVitoria;
+
 
     private void Start() {
 
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
-        poderP1 = new Sans(RaqueteP1);
-        poderP2 = new Solaire(RaqueteP2);  // Poder associado à RaqueteP2
-        medidorPoder.maxValue = poderP1.EnergiaMaxima;
-        medidorPoder.maxValue = poderP2.EnergiaMaxima;
+        
+        // Isso aqui não tá certo mas funciona e precisa entregar hoje
+        if(gameObject.name.Equals("RaqueteP1")) {
+            poder = Configuracoes.poderP1;
+            nome = Configuracoes.nomeP1;
+        }
+        else if(gameObject.name.Equals("RaqueteP2")) {
+            poder = Configuracoes.poderP2;
+            nome = Configuracoes.nomeP2;
+        }
+
+        if(poder == null) {
+            poder = new Solaire(gameObject);
+        }
+
+        poder.SetRaqueteRelacionada(gameObject);
+        medidorPoder.maxValue = poder.GetEnergiaMaxima();
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) {
         if(colisao.gameObject.CompareTag("Bola")) {
             PontosPoder += FuncaoPoder(PegarPosYRelativa(colisao.gameObject));
 
-            if (PontosPoder >= poderP1.EnergiaMaxima ) 
+            if (PontosPoder >= poder.GetEnergiaMaxima()) 
             {
                 StartCoroutine(poderP1.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
@@ -47,6 +63,8 @@ public class Jogador : MonoBehaviour {
         }
     }
 
+    
+
     public void Pontuar() {
         pontos++;
 
@@ -54,9 +72,10 @@ public class Jogador : MonoBehaviour {
 
         if(pontosVitoria <= pontos) {
             Vencer();
+            GerenciadorSFX.Tocar(EfeitoVitoria);
         }
         else {
-            partidaRelacionada.CriarBola();
+            GerenciadorSFX.Tocar(EfeitoPonto);
         }
     }
 
@@ -69,7 +88,6 @@ public class Jogador : MonoBehaviour {
     // Função que calcula o poder baseado na posição do jogador
     // insira o codigo abaixo no desmos e adicione os controles deslizantes para visualizar a função
     // \max\left(\frac{1+a^{2}}{b^{2}}x^{2}-a^{2},0\right)
-    
     private float FuncaoPoder(float pos) {
         float a2 = Mathf.Pow(limiteInferior, 2);
 
