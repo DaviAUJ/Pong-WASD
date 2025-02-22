@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RSolaire_0: 4483097532501845079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

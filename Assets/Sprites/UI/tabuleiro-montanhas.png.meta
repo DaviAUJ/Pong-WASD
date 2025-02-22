@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tabuleiro-montanhas_0: 6046979305886572577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

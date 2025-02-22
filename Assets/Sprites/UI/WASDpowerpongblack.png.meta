@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WASDpowerpongblack_0: -1217566840822045295
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

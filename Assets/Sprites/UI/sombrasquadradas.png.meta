@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sombrasquadradas_0: 5476776864841804909
+      sombrasquadradas_1: -8028510938488604941
+      sombrasquadradas_2: 5999874020584681627
+      sombrasquadradas_3: -1704795787199205841
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

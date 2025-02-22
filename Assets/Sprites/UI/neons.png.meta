@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      neons_0: 8901894276556257060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
