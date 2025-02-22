@@ -21,7 +21,7 @@ public class Jogador : MonoBehaviour {
 
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
         poderP1 = new Sans(RaqueteP1);
-        poderP2 = new Sans(RaqueteP2);  // Poder associado à RaqueteP2
+        poderP2 = new Solaire(RaqueteP2);  // Poder associado à RaqueteP2
         medidorPoder.maxValue = poderP1.EnergiaMaxima;
         medidorPoder.maxValue = poderP2.EnergiaMaxima;
     }

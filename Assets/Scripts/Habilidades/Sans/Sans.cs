@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.Playables;  // Necessário para usar PlayableDirector
 
 public class Sans : Poderes {
+
+    public TimelineManager timelineManager;
+
     private GameObject objetoBarreira;
    
     private Animator anim;
@@ -12,13 +15,17 @@ public class Sans : Poderes {
     [SerializeField] private PlayableDirector playableDirector;  // Referência ao PlayableDirector
     private GameObject raqueteRelacionada;
 
+
+
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;
         Nome = "Sans";
         tempoHabilidade = 9f;
 
         raqueteRelacionada = raquete;
-       
+
+        timelineManager = GameObject.FindObjectOfType<TimelineManager>();
+
         playableDirector = raquete.GetComponent<PlayableDirector>();
 
         if (playableDirector == null)
@@ -68,12 +75,13 @@ public class Sans : Poderes {
             // Verifica se o PlayableDirector não está tocando a animação
             if (playableDirector.state != PlayState.Playing)
             {
-               
-                playableDirector.Play();
-              
-                
+
+                timelineManager.PlayAnimation1();
+
+
+
             }
-             else
+            else
                  {
                   Debug.LogWarning("PlayableDirector não foi atribuído!");
                   
