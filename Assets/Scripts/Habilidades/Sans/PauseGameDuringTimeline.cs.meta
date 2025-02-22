@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b796787af21392342895677ef637bf6e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - timeline: {instanceID: 0}
+  - RaqueteP1: {instanceID: 0}
+  - RaqueteP2: {instanceID: 0}
+  - Bola: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

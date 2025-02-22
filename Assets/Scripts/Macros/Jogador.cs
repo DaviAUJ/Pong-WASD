@@ -9,7 +9,10 @@ public class Jogador : MonoBehaviour {
     public float limiteSuperior = 0.9f;
     public Slider medidorPoder;
     public Contador contadorRelacionado;
-    public Poderes poder;
+    public Poderes poderP1;
+    public Poderes poderP2;
+    public GameObject RaqueteP1;
+    public GameObject RaqueteP2;
 
     private Partida partidaRelacionada;
     private int pontos = 0;
@@ -18,6 +21,7 @@ public class Jogador : MonoBehaviour {
 
 
     private void Start() {
+
         partidaRelacionada = transform.parent.gameObject.GetComponent<Partida>();
         
         // Isso aqui não tá certo mas funciona e precisa entregar hoje
@@ -44,11 +48,18 @@ public class Jogador : MonoBehaviour {
 
             if (PontosPoder >= poder.GetEnergiaMaxima()) 
             {
-                StartCoroutine(poder.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
+                StartCoroutine(poderP1.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
+                PontosPoder = 0;
+            }
+            
+            if (PontosPoder >= poderP2.EnergiaMaxima)
+            {
+                StartCoroutine(poderP2.Ativar(colisao.gameObject.GetComponent<MovimentoBola>()));
                 PontosPoder = 0;
             }
 
             medidorPoder.value = PontosPoder; // Atualiza o medidor
+          
         }
     }
 

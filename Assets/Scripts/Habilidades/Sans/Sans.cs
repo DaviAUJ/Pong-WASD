@@ -1,9 +1,30 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Playables;  // Necessário para usar PlayableDirector
 
 public class Sans : Poderes {
+
+    public TimelineManager timelineManager;
+
     private GameObject objetoBarreira;
+   
+    private Animator anim;
+
+    [SerializeField] private PlayableDirector playableDirector;  // Referência ao PlayableDirector
+    private GameObject raqueteRelacionada;
+
+
+
+
+
+    public Sans() {
+        EnergiaMaxima = 20;
+        Nome = "Solaire";
+        tempoHabilidade = 8f;
+
+        CarregarSom("EfeitosSonoros/Mega");
+    }
 
 
 
@@ -18,13 +39,23 @@ public class Sans : Poderes {
     public Sans(GameObject raquete) {
         EnergiaMaxima = 25;
         Nome = "Sans";
-        tempoHabilidade = 5f;
+        tempoHabilidade = 9f;
 
         SetRaqueteRelacionada(raquete);
         CarregarSom("EfeitosSonoros/Mega");
-    }
-    
 
+        timelineManager = GameObject.FindObjectOfType<TimelineManager>();
+
+        playableDirector = raqueteRelacionada.GetComponent<PlayableDirector>();
+
+        if (playableDirector == null)
+        {
+            Debug.LogWarning("PlayableDirector não encontrado na raquete!");
+        }
+
+        // Começa desabilitado
+        objetoBarreira.SetActive(false);
+    }
 
     public override IEnumerator Ativar(MovimentoBola bola) {
         yield return new WaitForSeconds(0.05f);
@@ -34,11 +65,45 @@ public class Sans : Poderes {
         MudarOpacidade(0.1f);
         objetoBarreira.SetActive(true);
 
+        AtivarAnimacaoTimeline();
+
         yield return new WaitForSeconds(tempoHabilidade);
 
         // Retorna a opacidade e desativa a Barreira
         MudarOpacidade(1f);
         objetoBarreira.SetActive(false);
+
+
+    }
+
+    void AtivarAnimacaoTimeline()
+    {
+       
+        
+        if (playableDirector != null)
+        {
+            // Verifica se o PlayableDirector não está tocando a animação
+            if (playableDirector.state != PlayState.Playing)
+            {
+
+                timelineManager.PlayAnimation1();
+
+
+
+            }
+            else
+                 {
+                  Debug.LogWarning("PlayableDirector não foi atribuído!");
+                  
+            }
+
+            
+
+        }
+       
+
+
+
     }
 
     // Por algum motivo tenho que passar um novo Color para mudar só o alpha
