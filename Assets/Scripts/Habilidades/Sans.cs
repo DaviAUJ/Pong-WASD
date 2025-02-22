@@ -12,7 +12,7 @@ public class Sans : Poderes {
         Nome = "Solaire";
         tempoHabilidade = 8f;
 
-        CarregarSom("Assets/EfeitosSonoros/Mega.wav");
+        CarregarSom("EfeitosSonoros/Mega");
     }
 
     public Sans(GameObject raquete) {
@@ -21,7 +21,7 @@ public class Sans : Poderes {
         tempoHabilidade = 5f;
 
         SetRaqueteRelacionada(raquete);
-        CarregarSom("Assets/EfeitosSonoros/Mega.wav");
+        CarregarSom("EfeitosSonoros/Mega");
     }
     
 
@@ -66,7 +66,7 @@ public class Sans : Poderes {
     private void CriarBarreira() {
         // Pega o prefab e instancia ele atrás da raquete e filho de Partida
         objetoBarreira = MonoBehaviour.Instantiate(
-            (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BarreiraSans.prefab", typeof(GameObject)), 
+            (GameObject) Resources.Load("Prefabs/BarreiraSans", typeof(GameObject)), 
             new Vector3(raqueteRelacionada.transform.position.x * 1.05f, 0, 0), 
             Quaternion.identity,
             GameObject.Find("Partida").transform

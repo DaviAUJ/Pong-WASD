@@ -13,7 +13,7 @@ public class Fantasma : Poderes {
         Nome = "Solaire";
         tempoHabilidade = 8f;
 
-        CarregarSom("Assets/EfeitosSonoros/Fantasma.wav");
+        CarregarSom("EfeitosSonoros/Fantasma");
     }
 
     public Fantasma(GameObject raquete) {
@@ -22,7 +22,7 @@ public class Fantasma : Poderes {
         tempoHabilidade = 30f;
 
         SetRaqueteRelacionada(raquete);
-        CarregarSom("Assets/EfeitosSonoros/Fantasma.wav");
+        CarregarSom("EfeitosSonoros/Fantasma");
     }
 
 
@@ -41,7 +41,7 @@ public class Fantasma : Poderes {
     private void CriarFantasma(MovimentoBola bola) {
         // Instancia
         bolaFantasma = MonoBehaviour.Instantiate(
-            (GameObject) AssetDatabase.LoadAssetAtPath("Assets/Prefabs/BolaFantasma Variant.prefab", typeof(GameObject)), 
+            Resources.Load<GameObject>("Prefabs/BolaFantasma Variant"), 
             new Vector3(bola.gameObject.transform.position.x, bola.gameObject.transform.position.y, 0), 
             Quaternion.identity,
             GameObject.Find("Partida").transform

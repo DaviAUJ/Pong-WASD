@@ -15,7 +15,7 @@ public class Solaire : Poderes
         Nome = "Solaire";
         tempoHabilidade = 8f;
 
-        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
+        CarregarSom("EfeitosSonoros/PlinPlinPlon");
     }
 
     public Solaire(GameObject raquete) {
@@ -24,7 +24,7 @@ public class Solaire : Poderes
         tempoHabilidade = 8f;
 
         SetRaqueteRelacionada(raquete);
-        CarregarSom("Assets/EfeitosSonoros/PlinPlinPlon.wav");
+        CarregarSom("EfeitosSonoros/PlinPlinPlon");
     }
 
 

@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 //Superclasse para poderes
@@ -26,6 +25,6 @@ public abstract class Poderes
     // por que eu só não fiz os poderes herdarem MonoBehavior? Saudade de um SerializeField :(
     // Pelo menos eu aprendi algo
     protected void CarregarSom(string caminho) {
-        efeitoAtivacao = (AudioClip) AssetDatabase.LoadAssetAtPath(caminho, typeof(AudioClip));
+        efeitoAtivacao = Resources.Load<AudioClip>(caminho);
     }
 }
